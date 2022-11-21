@@ -2,6 +2,7 @@ class UserService {
   constructor() {
     this.users = [
       {
+        _id: 1,
         name: 'Jasmin',
         surname: 'Luka',
         age: 25,
