@@ -1,12 +1,20 @@
 class UserService {
   constructor() {
-    this.users = []
+    this.users = [
+      {
+        name: 'Jasmin',
+        surname: 'Luka',
+        age: 25,
+        email: 'jasminluka@gmail.com',
+        password: 'admin123',
+      },
+    ]
   }
 
   getAllUsers() {
     return this.users
   }
-  
+
   getUserById(id) {
     const user = this.users.find((user) => user._id === id)
 
@@ -26,32 +34,34 @@ class UserService {
 
     return user
   }
-  
+
   createUser(user) {
     user._id = this.users.length + 1
-    
+
     this.users.push(user)
 
     return user
   }
-  
+
   updateUser(id, newUser) {
     let userToUpdate = this.users.find((user) => user._id === id)
-    
+
     if (!userToUpdate) {
       return false
     }
 
     userToUpdate = {
       ...userToUpdate,
-      ...newUser
+      ...newUser,
     }
 
-    this.users = this.users.map((user) => user._id === id ? userToUpdate : user)
+    this.users = this.users.map((user) =>
+      user._id === id ? userToUpdate : user
+    )
 
     return userToUpdate
   }
-  
+
   deleteUser(id) {
     const user = this.users.find((user) => user._id === id)
 
